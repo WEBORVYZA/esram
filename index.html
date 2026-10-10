@@ -1,0 +1,596 @@
+<!DOCTYPE html>
+<html lang="tr">
+<head>
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1.0">
+<title>Esra'ya Bir Mektup 💌</title>
+
+<style>
+@import url('https://fonts.googleapis.com/css2?family=Dancing+Script:wght@500;600;700&family=Poppins:wght@400;500;600;700&display=swap');
+
+*{margin:0;padding:0;box-sizing:border-box}
+html{scroll-behavior:smooth}
+body{
+ font-family:Poppins,sans-serif;
+ color:#67465e;
+ background:#fff7fb;
+ overflow-x:hidden;
+}
+#background-hearts{
+ position:fixed;inset:0;pointer-events:none;overflow:hidden;z-index:0
+}
+.floating-heart{
+ position:absolute;bottom:-50px;
+ animation:floatUp linear infinite;opacity:.45
+}
+@keyframes floatUp{
+ to{transform:translateY(-115vh) rotate(300deg);opacity:0}
+}
+nav{
+ position:relative;z-index:2;
+ display:flex;justify-content:space-between;align-items:center;
+ padding:20px 7%;background:#fff9fce8;
+ backdrop-filter:blur(12px)
+}
+.logo{font:700 30px 'Dancing Script';color:#d55791}
+nav a{font-size:12px;color:#875c7b;text-decoration:none;margin-left:12px}
+.hero{
+ position:relative;z-index:1;min-height:90vh;
+ display:flex;flex-direction:column;justify-content:center;
+ align-items:center;text-align:center;padding:70px 22px;
+ background:
+ radial-gradient(ellipse at 10% 20%,#ffdfed,transparent 45%),
+ radial-gradient(ellipse at 90% 80%,#e8ddff,transparent 45%),
+ #fff8fc
+}
+.tag{
+ padding:10px 20px;border:1px solid #f4c5dc;
+ border-radius:30px;background:#ffffffa6;
+ font-size:12px;color:#c4548d;margin-bottom:25px
+}
+.hero h1{
+ font:700 clamp(65px,12vw,115px) 'Dancing Script';
+ color:#d55791;line-height:1.2
+}
+.hero h2{font-size:clamp(18px,4vw,25px);margin:15px 0}
+.hero p{max-width:650px;line-height:2;color:#896c85;font-size:14px;margin:10px 0 28px}
+button{
+ cursor:pointer;border:0;border-radius:30px;padding:14px 24px;
+ background:linear-gradient(135deg,#ff8eb9,#d57cc7);
+ color:white;font-weight:700;font-family:inherit;
+ box-shadow:0 8px 25px #d5579128;transition:.25s
+}
+button:hover{transform:translateY(-3px)}
+section{position:relative;z-index:1;padding:80px 7%}
+.heading{text-align:center;max-width:720px;margin:0 auto 42px}
+.heading span{font-size:11px;letter-spacing:3px;color:#d55791;font-weight:700}
+.heading h2{
+ font:700 clamp(38px,7vw,58px) 'Dancing Script';
+ color:#bd609a;margin:12px 0
+}
+.heading p{font-size:14px;line-height:1.9;color:#967d91}
+.letter-section{background:linear-gradient(#fff8fc,#fff0f7)}
+.paper{
+ max-width:820px;margin:auto;padding:clamp(25px,6vw,65px);
+ background:#fffefa;border:1px solid #f2d7e5;
+ box-shadow:0 20px 65px #a66b9614;border-radius:8px;
+ position:relative
+}
+.paper:after{
+ content:"♡";position:absolute;right:24px;top:8px;
+ font-size:43px;color:#f1c4da
+}
+.paper h3{
+ font:600 30px 'Dancing Script';color:#cc6499;margin-bottom:25px
+}
+.paper p{font-size:14px;line-height:2.15;margin-bottom:19px;color:#765b72}
+.signature{text-align:right;font:700 30px 'Dancing Script';color:#ce619a;margin-top:30px}
+.cards{
+ display:grid;grid-template-columns:repeat(3,1fr);
+ gap:20px;max-width:1150px;margin:auto
+}
+.card{
+ padding:28px 24px;background:white;border:1px solid #f3dbea;
+ border-radius:22px;box-shadow:0 10px 30px #a66b9610;
+ transition:.25s
+}
+.card:hover{transform:translateY(-6px)}
+.card .icon{font-size:36px}
+.card h3{color:#b75b91;margin:15px 0 10px;font-size:17px}
+.card p{font-size:13px;line-height:1.95;color:#8c7488}
+.quote-section{background:linear-gradient(135deg,#f6eaff,#ffebf4);text-align:center}
+.quote{
+ max-width:800px;margin:auto;font:600 clamp(27px,5vw,42px) 'Dancing Script';
+ color:#b45b95;line-height:1.6;padding:20px 0 30px
+}
+.promise-list{max-width:820px;margin:auto}
+.promise{
+ display:flex;gap:18px;padding:23px 8px;
+ border-bottom:1px solid #f0dce8;align-items:flex-start
+}
+.promise .symbol{
+ min-width:43px;height:43px;display:grid;place-items:center;
+ background:#ffe3ef;border-radius:50%;font-size:20px
+}
+.promise h3{font-size:16px;color:#b85c91;margin:2px 0 8px}
+.promise p{font-size:13px;line-height:1.95;color:#8d768a}
+.surprise{text-align:center;background:linear-gradient(150deg,#fff0f7,#f1eaff)}
+.gift{font-size:80px;margin:15px 0;animation:bob 2s infinite}
+@keyframes bob{50%{transform:translateY(-10px) rotate(4deg)}}
+.hidden-message{
+ display:none;max-width:720px;margin:30px auto 0;padding:30px;
+ background:white;border:1px solid #f1d6e7;border-radius:22px;
+ font-size:14px;line-height:2;animation:appear .5s
+}
+@keyframes appear{from{opacity:0;transform:translateY(10px)}to{opacity:1;transform:translateY(0)}}
+.notes{
+ display:grid;grid-template-columns:repeat(2,1fr);
+ gap:18px;max-width:900px;margin:auto
+}
+.note{
+ background:white;border:1px solid #f0d9e7;border-radius:18px;
+ padding:24px;cursor:pointer;transition:.2s
+}
+.note:hover{transform:scale(1.02)}
+.note h3{color:#c35d95;font-size:15px;margin-bottom:12px}
+.note p{font-size:13px;line-height:1.9;color:#8b7489}
+.note small{display:block;color:#cb86ac;margin-top:12px}
+.final{text-align:center;background:#fff9fc;padding:90px 20px}
+.final .heart{font-size:55px;color:#ec8cb9;animation:pulse 1.5s infinite}
+@keyframes pulse{50%{transform:scale(1.15)}}
+.final h2{font:700 clamp(40px,8vw,67px) 'Dancing Script';color:#cf6099;margin:18px 0}
+.final p{max-width:720px;margin:auto;font-size:14px;line-height:2.1;color:#8c7389}
+footer{position:relative;z-index:1;text-align:center;padding:25px;background:#ffedf6;color:#b57b9d;font-size:12px;line-height:2}
+#toast{
+ position:fixed;z-index:10;bottom:20px;left:50%;
+ transform:translate(-50%,30px);opacity:0;pointer-events:none;
+ width:max-content;max-width:90%;padding:16px 20px;
+ background:white;border:1px solid #f0c9df;border-radius:16px;
+ box-shadow:0 8px 30px #00000012;font-size:13px;line-height:1.8;
+ transition:.3s;text-align:center
+}
+#toast.show{opacity:1;transform:translate(-50%,0)}
+@media(max-width:750px){
+ nav{padding:16px 5%}nav a{margin-left:6px;font-size:10px}
+ .logo{font-size:25px}.cards{grid-template-columns:1fr}
+ .notes{grid-template-columns:1fr}section{padding:65px 6%}
+}
+@media(prefers-reduced-motion:reduce){
+ *,*:before,*:after{animation:none!important;scroll-behavior:auto!important;transition:none!important}
+}
+</style>
+</head>
+
+<body>
+<div id="background-hearts"></div>
+<div id="toast"></div>
+
+<nav>
+ <div class="logo">Esra'ya ♡</div>
+ <div>
+  <a href="#mektup">Mektup</a>
+  <a href="#sozler">Sözler</a>
+  <a href="#surpriz">Sürpriz</a>
+ </div>
+</nav>
+
+<header class="hero">
+ <div class="tag">💌 Kalpten gelen birkaç satır</div>
+ <h1>Canım Esra</h1>
+ <h2>Her zaman yanındayım 🤍</h2>
+ <p>
+ Bazen bir insana değer verdiğini anlatmak için yüzlerce kelime gerekir
+ ama bazen tek bir cümle bile her şeyi anlatır
+ ne yaşarsan yaşa ne hissedersen hisset bilmeni isterim ki
+ seni dinlemeye ve elimden geldiğince sana destek olmaya hazırım
+ </p>
+ <button onclick="document.getElementById('mektup').scrollIntoView({behavior:'smooth'})">
+ Sana söylemek istediklerim 💌
+ </button>
+</header>
+
+<section class="letter-section" id="mektup">
+ <div class="heading">
+  <span>KALBİMDEN GELENLER</span>
+  <h2>Sana Uzun Bir Mektubum Var</h2>
+  <p>Belki her şeyi yüz yüze anlatamam ama bazı şeyleri yazmak istedim</p>
+ </div>
+
+ <article class="paper">
+  <h3>Canım Esra'ya... 🌷</h3>
+
+  <p>
+  Esra bazen insanın içinden geçenleri anlatması kolay olmuyor
+  çünkü bazı duygular birkaç kelimeye sığmıyor
+  ben de sana burada sadece güzel cümleler yazmak için değil
+  gerçekten bilmeni istediğim şeyleri anlatmak için bu satırları yazıyorum
+  </p>
+
+  <p>
+  Hayatımız boyunca birçok insanla karşılaşıyoruz
+  bazıları hayatımıza girip geçiyor bazıları bize güzel anılar bırakıyor
+  bazılarıysa varlığıyla kendimizi daha iyi hissetmemize yardımcı oluyor
+  Ben istiyorum ki sen de ne zaman bu yazıları okursan
+  birilerinin senin iyiliğini istediğini ve senin mutlu olmanı önemsediğini hatırlayasın
+  </p>
+
+  <p>
+  Hayat her zaman kolay olmayabilir Esra
+  bazen hiçbir şey yolunda gitmiyormuş gibi hissedebiliriz
+  bazen herkese iyi olduğumuzu söylerken içimizde bir sürü düşünce taşıyabiliriz
+  bazen de anlatmak istesek bile nereden başlayacağımızı bilemeyebiliriz
+  İşte böyle zamanlarda kendini anlatmak zorunda hissetmeden
+  konuşmak istersen seni dinlemeye çalışacak bir dostun olduğunu unutma
+  </p>
+
+  <p>
+  Sana her zaman bütün sorunlarını çözeceğimi söyleyemem
+  çünkü bazen insanın ihtiyacı bir çözümden çok anlaşılmak oluyor
+  bazen nasihat değil sadece dinlenmek istiyoruz
+  bazen de birinin bizi yargılamadan dinlemesi yetiyor
+  Ne zaman böyle hissedersen bana anlatabilirsin
+  elimden geldiğince seni anlamaya ve yanında olmaya çalışırım
+  </p>
+
+  <p>
+  Şunu da bilmeni isterim ki her zaman güçlü görünmek zorunda değilsin
+  Yorulduğunda dinlenebilirsin
+  Üzüldüğünde bunu saklamak zorunda değilsin
+  Bir şeyler istediğin gibi gitmediğinde kendini suçlamak yerine
+  kendine biraz zaman tanıyabilirsin
+  Hepimizin bazen durmaya nefes almaya ve yeniden başlamaya ihtiyacı oluyor
+  </p>
+
+  <p>
+  Kendini başkalarıyla kıyaslama olur mu
+  Herkesin hayatı farklı herkesin yaşadığı şeyler farklı
+  Başkasının ne kadar ilerlediğine bakarken kendi çabalarını küçümseme
+  Bugün küçücük gördüğün bir adım bile yarın senin için güzel bir başlangıç olabilir
+  Kendine karşı başkalarına olduğundan daha acımasız davranma
+  çünkü sen de anlayışı sabrı ve güzel sözleri hak ediyorsun
+  </p>
+
+  <p>
+  Bir gün çok mutlu olduğunda da bana anlatabilirsin
+  Güzel bir haber aldığında sevincini paylaşabilirsin
+  Bir şey başardığında kendinle gurur duyabilirsin
+  Her konuşmanın bir sorunla ya da üzüntüyle ilgili olması gerekmiyor
+  Bazen sadece güzel şeylerden konuşmak gülmek ve günlük hayatı paylaşmak da güzeldir
+  Ben senin sadece zor günlerinde değil güzel günlerinde de
+  mutluluğuna ortak olabilmeyi isterim
+  </p>
+
+  <p>
+  Belki her gün konuşamayız belki bazen ikimizin de işleri olur
+  ama bir insanın değerini yalnızca kaç mesaj attığıyla ölçmemek gerektiğine inanıyorum
+  Önemli olan birbirimize karşı içten olmak
+  birbirimizi anlamaya çalışmak ve ihtiyaç duyduğumuzda iletişim kurabilmek
+  Benim için dostluğun güzelliği de biraz burada saklı
+  </p>
+
+  <p>
+  Eğer bir gün canını sıkan bir şey olursa ve bunu biriyle paylaşmak istersen
+  bana yazabilirsin arayabilirsin
+  Anlatmak istemediğin bir şey varsa buna da saygı duyarım
+  Sana zaman tanımak da seni dinlemek kadar önemlidir
+  Her şeyi hemen anlatmak zorunda değilsin
+  ne zaman hazır hissedersen o zaman konuşabiliriz
+  </p>
+
+  <p>
+  Senden tek istediğim kendini ihmal etmemen
+  Hayallerini ertelememen sırf başkaları mutlu olsun diye kendi hislerini unutma
+  Kendine güzel davran dinlenmeyi de gülmeyi de yeni şeyler denemeyi de unutma
+  Hayatında seni anlayan insanların çoğalmasını
+  kalbinin huzur bulmasını ve emek verdiğin şeylerin güzel sonuçlanmasını diliyorum
+  </p>
+
+  <p>
+  Belki bu mektup uzun ama sana söylemek istediğim en önemli şey çok basit
+  Her zaman her şeyi tek başına taşımak zorunda değilsin
+  Ne zaman konuşmaya ihtiyacın olursa elimden geldiğince yanında olmaya çalışacağım
+  Seni dinlemek için zaman ayırmak ve sana destek olmak benim için kıymetli
+  </p>
+
+  <p>
+  Umarım hayat karşına güzel insanlar çıkarır
+  umarım gözlerinin içinin güldüğü günlerin sayısı artar
+  umarım emeklerinin karşılığını alır ve kendinle gurur duyduğun
+  birçok güzel an yaşarsın
+  Zor günlerin geçici olduğunu ve her zaman yeni bir başlangıç ihtimalinin bulunduğunu unutma
+  </p>
+
+  <p>
+  Son olarak Esra ne olursa olsun kendine inanmayı bırakma
+  Kendini değersiz hissettiğin anlarda kendi güzelliklerini hatırla
+  Her şeyi kusursuz yapmak zorunda değilsin
+  Sadece kendin ol ve kendine hak ettiğin şefkati göster
+  </p>
+
+  <p>
+  İyi ki varsın Esra
+  Umarım bu satırlar yüzünde küçük bir gülümseme oluşturur
+  ve bir gün kendini yalnız hissettiğinde sana güzel şeyleri hatırlatır
+  </p>
+
+  <div class="signature">Her zaman iyiliğini isteyen bir dostun ♡</div>
+ </article>
+</section>
+
+<section id="sozler">
+ <div class="heading">
+  <span>UNUTMA DİYE</span>
+  <h2>Sana Söylemek İstediğim Şeyler</h2>
+  <p>Bir dostun diğerine hatırlatabileceği küçük ama anlamlı şeyler</p>
+ </div>
+
+ <div class="cards">
+  <div class="card">
+   <div class="icon">🫶</div>
+   <h3>Her Zaman Konuşabilirsin</h3>
+   <p>İçinde birikenleri anlatmak istediğinde kendini yalnız hissetme. Seni dinlemek için elimden geleni yaparım. Her soruna cevap bulamasam bile seni anlamaya çalışırım.</p>
+  </div>
+  <div class="card">
+   <div class="icon">🌷</div>
+   <h3>Kendini İhmal Etme</h3>
+   <p>Herkesin mutluluğunu düşünürken kendi mutluluğunu unutma. Senin de dinlenmeye anlaşılmaya ve kendine zaman ayırmaya ihtiyacın var.</p>
+  </div>
+  <div class="card">
+   <div class="icon">☀️</div>
+   <h3>Güzel Günler De Var</h3>
+   <p>Bir günün kötü geçmesi her şeyin kötü gideceği anlamına gelmez. Kendine zaman ver ve önünde seni bekleyen güzel ihtimalleri unutma.</p>
+  </div>
+  <div class="card">
+   <div class="icon">💌</div>
+   <h3>Seni Dinleyen Biri Var</h3>
+   <p>Bazen sadece anlatmak ister insan. Çözüm aramadan önce dinlenmek ister. Konuşmak istediğinde sana kulak vermeye çalışacağımı bil.</p>
+  </div>
+  <div class="card">
+   <div class="icon">🦋</div>
+   <h3>Kendi Yolunda İlerle</h3>
+   <p>Kimseyle yarışmak zorunda değilsin. Herkesin zamanı ve hikâyesi farklı. Kendine inan ve küçük adımlarını bile küçümseme.</p>
+  </div>
+  <div class="card">
+   <div class="icon">💗</div>
+   <h3>İyi Ki Varsın</h3>
+   <p>İnsanların değerini onlara söylemek için özel bir gün beklemeye gerek yok. Senin de değer gördüğünü ve iyiliğinin istendiğini bilmeni istiyorum.</p>
+  </div>
+ </div>
+</section>
+
+<section class="quote-section">
+ <div class="heading">
+  <span>ESRA'YA ÖZEL GÜZEL SÖZLER</span>
+  <h2>Kalbinden Bir Cümle Seç</h2>
+  <p>Butona bastıkça sana başka bir güzel söz gelsin</p>
+ </div>
+ <div class="quote" id="quote">
+  Bazen bir insanın hayatına dokunmak için büyük şeyler yapmak gerekmez
+  içten bir söz ve samimi bir dinleyiş bile çok şey ifade edebilir
+ </div>
+ <button onclick="changeQuote()">Başka bir söz göster ✨</button>
+</section>
+
+<section>
+ <div class="heading">
+  <span>KÜÇÜK HATIRLATMALAR</span>
+  <h2>Ne Olursa Olsun Hatırla</h2>
+  <p>Bunlar zorlandığında dönüp okuyabileceğin birkaç satır</p>
+ </div>
+ <div class="promise-list">
+  <div class="promise">
+   <div class="symbol">♡</div>
+   <div><h3>Her şeyi içinde tutmak zorunda değilsin</h3><p>Bir şey seni üzüyorsa ve paylaşmak istiyorsan güvendiğin biriyle konuşabilirsin. Hislerini dile getirmek seni güçsüz yapmaz.</p></div>
+  </div>
+  <div class="promise">
+   <div class="symbol">🌸</div>
+   <div><h3>Kendine zaman tanı</h3><p>Bazı şeylerin düzelmesi bazı duyguların hafiflemesi zaman alabilir. Kendinden hemen iyi olmanı bekleme ve kendine anlayışlı davran.</p></div>
+  </div>
+  <div class="promise">
+   <div class="symbol">✨</div>
+   <div><h3>Küçük başarılarını kutla</h3><p>Her şeyin kusursuz olmasını bekleme. Bir adım atmak bir işi tamamlamak ya da zor bir günü geride bırakmak bile kıymetlidir.</p></div>
+  </div>
+  <div class="promise">
+   <div class="symbol">🫶</div>
+   <div><h3>Destek istemekten çekinme</h3><p>Bazen bir dostla konuşmak bazen de güvendiğin başka birinden yardım istemek insana iyi gelebilir. Her şeyi tek başına çözmek zorunda değilsin.</p></div>
+  </div>
+  <div class="promise">
+   <div class="symbol">💗</div>
+   <div><h3>Mutlu olmayı erteleme</h3><p>Her şey yoluna girdikten sonra değil bugün de kendin için güzel bir şey yapabilirsin. Biraz dinlenmek bir kahve içmek ya da sevdiğin biriyle konuşmak bile güzel bir başlangıç olabilir.</p></div>
+  </div>
+  <div class="promise">
+   <div class="symbol">🦋</div>
+   <div><h3>Senin de hikâyen güzel devam edebilir</h3><p>Geçmişte yaşadıkların bütün geleceğini belirlemek zorunda değil. Önünde yeni insanlar yeni anılar ve yeni başlangıçlar olabilir.</p></div>
+  </div>
+ </div>
+</section>
+
+<section class="surprise" id="surpriz">
+ <div class="heading">
+  <span>KÜÇÜK BİR SÜRPRİZ</span>
+  <h2>Esra Bu Kutuyu Aç 💝</h2>
+  <p>İçinde sana söylemek istediğim birkaç cümle var</p>
+ </div>
+ <div class="gift">🎁</div>
+ <button onclick="openGift()">Sürprizi aç 💗</button>
+ <div class="hidden-message" id="giftMessage">
+  <div style="font-size:48px">💌</div>
+  <h3 style="font:700 34px 'Dancing Script';color:#ce6099;margin:12px">Canım Esra</h3>
+  <p>
+   Bu küçük sürprizin sana hatırlatmasını istediğim bir şey var
+   <br><br>
+   Hayatında her şeyin yolunda gittiği günlerde de zorlandığın günlerde de
+   kendine karşı nazik olmayı unutma
+   Kendini anlatmak istediğinde kelimelerini seçmek zorunda hissetme
+   ne zaman konuşmaya hazır olursan içinden geçenleri paylaşabilirsin
+   <br><br>
+   Her zaman sana istediğin cevabı veremeyebilirim ama seni dinlemeye
+   anlamaya ve elimden geldiğince destek olmaya çalışırım
+   <br><br>
+   Güzel haberlerini benimle paylaşmanı zor günlerinde de
+   kendini yalnız hissetmemen için elimden geleni yapmayı isterim
+   <br><br>
+   <strong>İyi ki varsın Esra iyi ki seni tanımışım</strong>
+   <br><br>
+   Yüzünden gülümseme kalbinden umut eksik olmasın
+   <br><br>
+   <span style="font:700 30px 'Dancing Script';color:#ce6099">Her zaman yanındayım ♡</span>
+  </p>
+ </div>
+</section>
+
+<section>
+ <div class="heading">
+  <span>SANA KÜÇÜK NOTLAR</span>
+  <h2>Birine İyi Gelebilecek Sözler</h2>
+  <p>İstediğin nota dokun ve içindeki mesajı oku</p>
+ </div>
+ <div class="notes">
+  <div class="note" onclick="showNote(0)">
+   <h3>🌧️ Üzgün olduğunda</h3>
+   <p>Bugün kendine biraz daha anlayışlı davran.</p>
+   <small>Mesajı okumak için dokun →</small>
+  </div>
+  <div class="note" onclick="showNote(1)">
+   <h3>🌞 Mutlu olduğunda</h3>
+   <p>Güzel şeyleri ertelemeden kutla.</p>
+   <small>Mesajı okumak için dokun →</small>
+  </div>
+  <div class="note" onclick="showNote(2)">
+   <h3>🌱 Yorulduğunda</h3>
+   <p>Dinlenmek de ilerlemenin bir parçasıdır.</p>
+   <small>Mesajı okumak için dokun →</small>
+  </div>
+  <div class="note" onclick="showNote(3)">
+   <h3>💌 Konuşmak istediğinde</h3>
+   <p>İçinden geçenleri paylaşmaktan çekinme.</p>
+   <small>Mesajı okumak için dokun →</small>
+  </div>
+ </div>
+</section>
+
+<section class="final">
+ <div class="heart">♡</div>
+ <h2>Son Bir Şey Söylemek İstiyorum</h2>
+ <p>
+ Esra bazen bir insanın hayatında güzel bir iz bırakmak için
+ uzun uzun konuşmak gerekmiyor
+ ama bazen de içimizden geçenleri anlatmak istiyoruz
+ ben de bu sayfada sana tam olarak bunu anlatmak istedim
+ <br><br>
+ Hayatında hep güzel insanlar olsun
+ emek verdiğin şeylerin karşılığını al
+ hayallerinden vazgeçme ve kendine inanmaya devam et
+ Her zaman her şey mükemmel olmayabilir
+ ama zorlandığında destek istemekten çekinme
+ <br><br>
+ <strong>Ne zaman bir şey olursa gelip anlatabilirsin
+ mesaj atabilir ya da arayabilirsin
+ elimden geldiğince yanında olurum
+ seni dinlemeye ve desteklemeye çalışırım</strong>
+ <br><br>
+ Bu sayfa sana küçük bir hatırlatma olsun
+ kendine iyi bak ve ne kadar değerli olduğunu unutma
+ <br><br>
+ <span style="font:700 30px 'Dancing Script';color:#ce6099">İyi ki varsın Esra 💗</span>
+ </p>
+ <br><br>
+ <button onclick="sendHearts()">Esra'ya kalpler gönder 💖</button>
+</section>
+
+<footer>
+ Esra için sevgiyle hazırlandı 💌
+ <br>Bir dostluk bazen birkaç güzel cümlede saklıdır ♡
+ <br>🌷 💗 🦋 ✨ 💕
+</footer>
+
+<script>
+const quotes=[
+ "Bazen bir insanın hayatına dokunmak için büyük şeyler yapmak gerekmez içten bir söz ve samimi bir dinleyiş bile çok şey ifade edebilir",
+ "Her şeyi bugün çözmek zorunda değilsin kendine zaman tanı ve adım adım ilerle",
+ "Kendini başkalarıyla kıyaslama senin hikâyen sana özel ve kendi yolunda ilerliyorsun",
+ "Güzel kalpli insanların da dinlenmeye anlaşılmaya ve destek görmeye ihtiyacı vardır",
+ "Bazen küçük bir mesaj bile insana yalnız olmadığını hatırlatabilir",
+ "Gerçek dostluk birbirini anlamaya çalışmak ve ihtiyaç duyulduğunda destek olmaktır",
+ "Bugün zor olabilir ama yarının da aynı olmak zorunda olmadığını unutma",
+ "Kendine başkalarına davrandığından daha sert davranma sen de anlayışı hak ediyorsun",
+ "Hayatının en güzel anıları henüz yaşanmamış olabilir güzel ihtimallere kapını kapatma",
+ "Bir dostun en güzel hediyesi bazen sadece içtenlikle yanında olduğunu hissettirmesidir",
+ "Ne kadar yavaş ilerlediğin değil kendine ne kadar emek verdiğin de önemlidir",
+ "Umarım hayat karşına kalbini yormayan huzurunu çoğaltan insanlar çıkarır"
+];
+let previous=-1;
+
+function changeQuote(){
+ let n;
+ do{n=Math.floor(Math.random()*quotes.length)}while(n===previous);
+ previous=n;
+ const el=document.getElementById("quote");
+ el.style.opacity=0;
+ setTimeout(()=>{el.textContent=quotes[n];el.style.opacity=1},220);
+}
+
+function openGift(){
+ const el=document.getElementById("giftMessage");
+ const open=el.style.display==="block";
+ el.style.display=open?"none":"block";
+ if(!open){
+  el.scrollIntoView({behavior:"smooth",block:"center"});
+  sendHearts();
+ }
+}
+
+const noteMessages=[
+ "Esra bazen üzülmek bazen yorulmak çok normal. Her zaman güçlü olmak zorunda değilsin. Kendine zaman tanı ve anlatmak istersen güvendiğin biriyle konuş. Her şeyi bir anda çözmek zorunda değilsin. 💗",
+ "Mutlu olduğun anların kıymetini bil. Güzel bir haber aldığında sevin, kahkaha at, sevdiklerinle paylaş. Mutlu olmak için her şeyin kusursuz olmasını bekleme. 🌷",
+ "Biraz durmak ve dinlenmek vazgeçmek değildir. Kendine nefes alacak bir alan aç. Sonra hazır olduğunda yeniden devam edebilirsin. Her adımın bir anlamı var. 🦋",
+ "Ne zaman içinden geçenleri anlatmak istersen konuşabilirsin. Her sorunun çözümünü bulamayabilirim ama seni dinlemek ve anlamaya çalışmak için elimden geleni yaparım. 🫶"
+];
+
+function showNote(i){showToast(noteMessages[i],6500)}
+
+function showToast(message,duration=3000){
+ const el=document.getElementById("toast");
+ el.textContent=message;
+ el.classList.add("show");
+ clearTimeout(window.toastTimer);
+ window.toastTimer=setTimeout(()=>el.classList.remove("show"),duration);
+}
+
+function sendHearts(){
+ const container=document.body;
+ const emojis=["💗","💖","💕","🌸","✨","🦋"];
+ for(let i=0;i<25;i++){
+  const el=document.createElement("span");
+  el.textContent=emojis[Math.floor(Math.random()*emojis.length)];
+  el.style.cssText="position:fixed;z-index:100;left:"+Math.random()*100+
+  "vw;top:80vh;font-size:"+(16+Math.random()*20)+
+  "px;pointer-events:none;transition:transform 2.5s ease,opacity 2.5s ease";
+  container.appendChild(el);
+  requestAnimationFrame(()=>{
+   el.style.transform="translate("+((Math.random()-.5)*160)+"px,-"+(350+Math.random()*400)+"px) rotate(300deg)";
+   el.style.opacity="0";
+  });
+  setTimeout(()=>el.remove(),2600);
+ }
+ showToast("Esra'ya kocaman bir dostluk kalbi 💗");
+}
+
+(function createHearts(){
+ const box=document.getElementById("background-hearts");
+ const symbols=["♡","♥","✧","✿"];
+ for(let i=0;i<25;i++){
+  const el=document.createElement("span");
+  el.className="floating-heart";
+  el.textContent=symbols[Math.floor(Math.random()*symbols.length)];
+  el.style.left=Math.random()*100+"%";
+  el.style.fontSize=(12+Math.random()*19)+"px";
+  el.style.color=Math.random()>.5?"#f29ac2":"#b8a0ed";
+  el.style.animationDuration=(14+Math.random()*18)+"s";
+  el.style.animationDelay=(-Math.random()*25)+"s";
+  box.appendChild(el);
+ }
+})();
+</script>
+</body>
+</html>
